@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3137b62b-8ee9-49db-b80e-ac06eb29da71</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>LearningFromLabelProportions.py</StartupFile>
+    <StartupFile>CellMain.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,10 +21,25 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CellData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CellMain.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DataCleaner.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LearningFromLabelProportions.py" />
+    <Compile Include="LearningFromLabelProportions_legacy.py" />
+    <Compile Include="MnistMain.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelCreator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelEvaluator.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
