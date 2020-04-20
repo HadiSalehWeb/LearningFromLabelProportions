@@ -5,16 +5,18 @@ import os
 import os.path
 
 def get_cell_data(image_count):
+    dir = "D:\Fermentation_2\Tag "
     arr = [[], [], [], [], [], [], []]
     j = 0
-    print("Loading cell data #: ", end='')
-    for i in [0, 1, 2, 3, 4, 7, 8]:
-        print(i, end='', sep=', ')
-        for name in os.listdir('D:\Fermentation1\Tag' + str(i)):
-            arr[j].append(imageio.imread('D:\Fermentation1\Tag' + str(i) + '\\' + name))
+    print("Loading cell data #: ", end="")
+    for i in [0, 1, 2, 3, 4, 5, 6]:
+        print('')
+        print(str(i),end="",sep=", ")
+        for name in os.listdir(dir + str(i)):
+            arr[j].append(imageio.imread(dir + str(i) + '\\' + name))
         j += 1
-
-    all_labels = [100,98,95,97,94,39,22]
+        
+    all_labels = [0.876, 0.872, 0.862, 0.889, 0.846, 0.623, 0.4]
 
     data = []
     labels = []

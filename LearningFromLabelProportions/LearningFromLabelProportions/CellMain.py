@@ -4,11 +4,12 @@ from CellData import get_cell_data
 import keras.models as models
 
 image_shape = (140, 140)
-image_count = 100
-batch_size = 10
+image_count = 800
+batch_size = 1
 
 data_train, labels_train = get_cell_data(image_count)
-model = get_proportions_model(image_shape + (1,), image_count, 20, 10, 20, 10)
+model = get_proportions_model(image_shape + (1,), image_count, 3, 50, 5, 10)
+
 
 if len(data_train) % batch_size != 0:
     data_train = data_train[0:len(data_train) - (len(data_train) % batch_size)]

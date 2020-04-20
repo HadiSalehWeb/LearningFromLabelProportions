@@ -8,8 +8,8 @@ def get_proportions_model(image_shape,image_count,filter1=5,kernel1=9,filters2=1
     # Takes an image from the dataset and spits out the probability of the image containing the measured label
 
     image_input = layers.Input(shape=image_shape)
-    conv1 = layers.Convolution2D(5, 9, activation='relu', input_shape=image_shape)(image_input)
-    conv2 = layers.Convolution2D(10, 5, activation='relu')(conv1)
+    conv1 = layers.Convolution2D(filter1, kernel1, activation='relu', input_shape=image_shape)(image_input)
+    conv2 = layers.Convolution2D(filters2, kernel2, activation='relu')(conv1)
     flat = layers.Flatten()(conv2)
     image_output = layers.Dense(1, activation='sigmoid')(flat)
 
