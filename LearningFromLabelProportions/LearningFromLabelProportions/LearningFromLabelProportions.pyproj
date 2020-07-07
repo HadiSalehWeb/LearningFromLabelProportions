@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3137b62b-8ee9-49db-b80e-ac06eb29da71</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CellMain.py</StartupFile>
+    <StartupFile>CustomMain.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,13 +21,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CellData.py">
+    <Compile Include="CustomMain.py" />
+    <Compile Include="CustomDataProcessor.py" />
+    <Compile Include="CellDataProcessor.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CellMain.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataCleaner.py">
+    <Compile Include="MnistDataProcessor.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LearningFromLabelProportions_legacy.py" />

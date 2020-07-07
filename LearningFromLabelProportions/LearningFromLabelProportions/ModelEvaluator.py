@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 def plot(data_train, data_test, title, ylabel, xlabel):
     plt.plot(data_train)
     plt.plot(data_test)

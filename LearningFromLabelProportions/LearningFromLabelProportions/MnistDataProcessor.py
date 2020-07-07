@@ -5,13 +5,14 @@ from keras import layers, models
 import matplotlib.pyplot as plt
 
 def get_processed_mnist_data(group_size, class0=0, class1=1):
-    """Creates a set of sets, each containing a number of samples and the proportion of a certain label in that set. The propotion is the number of class1 items in the set, divided by the total number of items in the set.
+    """Creates a set of bags, each containing a number of samples and the proportion of a certain label in that bag. The propotion is the number of class1 items in the bag, divided by the total number of items in the bag.
 
     Keyword arguments:
-    group_size -- the size of each set.
+    group_size -- the size of each bag.
     class0 -- The filler label (default 0).
-    class1 -- The measured label (default 0).
+    class1 -- The measured label (the label for each bag is the proportion of this class relative to group_size) (default 1).
     """
+    # Fetshing and preprocessing
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
     x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
@@ -19,12 +20,9 @@ def get_processed_mnist_data(group_size, class0=0, class1=1):
     
     x_train = x_train.astype('float32')
     x_test = x_test.astype('float32')
+
     x_train /= 255
     x_test /= 255
-
-    #print('x_train shape:', x_train.shape)
-    #print(x_train.shape[0], 'train samples')
-    #print(x_test.shape[0], 'test samples')
 
     # Separate the two classes from the dataset
 
@@ -71,7 +69,7 @@ def get_processed_mnist_data(group_size, class0=0, class1=1):
 
     shuffled_data_test = np.array(shuffled_data_test)
 
-    # The data is grouped into sets with the proportion of class_1 items in each set
+    # The data is grouped into bags with the proportion of class_1 items in each bag
 
     def group(data, labels, group_size, measured_label):
         return (np.array([data[i:i + group_size] for i in range(0, len(data), group_size) if i + group_size <= len(data)]),
@@ -81,5 +79,5 @@ def get_processed_mnist_data(group_size, class0=0, class1=1):
     final_data_test, final_labels_test = group(shuffled_data_test, shuffled_labels_test, group_size, class1)
     
     # final_data shape: (groupCount, groupSize, 28: width, 28: height, 1) each element contains a pixel value between 0 and 1
-    # final_labels shape: (groupCount,) each element contains a value between 0 and 1, the proportion of class1
+    # final_labels shape: (groupCount,) each element contains a value between 0 and 1, the proportion of class1 in the bag
     return final_data_train, final_labels_train, final_data_test, final_labels_test
